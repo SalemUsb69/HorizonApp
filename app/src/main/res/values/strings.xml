@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Horizon</string>
+    <string name="error_message">There was an error, please Try Again</string>
+
+
+    <string name="error_text">Ooops! Sorry!</string>
+
+    <string name="error_ok_button_text">Ok</string>
+    <string name="network_unavailable">Network is unavailble</string>
+</resources>
