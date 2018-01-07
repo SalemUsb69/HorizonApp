@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,66 +11,78 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.androguro.usb.horizon.MainActivity">
 
-    <TextView
-        android:id="@+id/tempLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="--"
-        android:textColor="@android:color/white"
-        android:textSize="150sp" />
 
-    <ImageView
-        android:id="@+id/degreeImageView"
+    <ProgressBar
+        android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tempLabel"
-        android:layout_marginTop="50dp"
-        android:layout_toEndOf="@+id/tempLabel"
-        android:layout_toRightOf="@+id/tempLabel"
-        app:srcCompat="@drawable/degree" />
-
-    <TextView
-        android:id="@+id/timeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tempLabel"
-        android:layout_centerHorizontal="true"
-        android:text="..."
-        android:textColor="#80ffffff"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/locationLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/summaryLabel"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp"
-        android:text="Benghazi, Libya"
-        android:textColor="@android:color/white"
-        android:textSize="24sp" />
+        android:layout_alignStart="@+id/summaryLabel"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+
+        android:layout_marginTop="16dp"
+        android:maxHeight="30dp"
+        android:maxWidth="30dp"
+        android:minHeight="35dip"
+        android:minWidth="10dip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/iconImageView"
+        android:id="@+id/refreshImageView"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/locationLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
-        app:srcCompat="@drawable/cloudy_night" />
+        android:layout_alignLeft="@+id/summaryLabel"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/summaryLabel"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:srcCompat="@drawable/refresh"
+        android:layout_marginTop="16dp"
+        android:maxHeight="30dp"
+        android:maxWidth="30dp"
+        android:minHeight="35dip"
+        android:minWidth="10dip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/summaryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_horizontal"
+        android:text="Retrieving Weather..."
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tempLabel"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
-        android:id="@+id/linearLayout">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tempLabel">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -91,9 +103,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                tools:text="--"
                 android:textColor="@android:color/white"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                tools:text="--" />
 
         </LinearLayout>
 
@@ -116,46 +128,88 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                tools:text="--"
                 android:textColor="@android:color/white"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                tools:text="--" />
         </LinearLayout>
     </LinearLayout>
 
     <TextView
-        android:id="@+id/summaryLabel"
+        android:id="@+id/tempLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:gravity="center_horizontal"
-        android:text="Retrieving Weather..."
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="--"
         android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        android:textSize="150sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeLabel" />
 
     <ImageView
-        android:id="@+id/refreshImageView"
+        android:id="@+id/degreeImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/summaryLabel"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/summaryLabel"
-        app:srcCompat="@drawable/refresh" />
+        android:layout_alignTop="@+id/tempLabel"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_toEndOf="@+id/tempLabel"
+        android:layout_toRightOf="@+id/tempLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintStart_toEndOf="@+id/tempLabel"
+        app:layout_constraintTop_toTopOf="@+id/tempLabel"
+        app:srcCompat="@drawable/degree" />
 
-    <ProgressBar
-        android:id="@+id/progress"
+    <TextView
+        android:id="@+id/timeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/summaryLabel"
+        android:layout_above="@+id/tempLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="..."
+        android:textAlignment="textStart"
+        android:textColor="#80ffffff"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationLabel" />
+
+    <ImageView
+        android:id="@+id/iconImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/locationLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/locationLabel"
+        app:layout_constraintEnd_toStartOf="@+id/locationLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/cloudy_night" />
+
+    <TextView
+        android:id="@+id/locationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/summaryLabel"
-        android:maxHeight="30dp"
-        android:maxWidth="30dp"
-
-        android:minHeight="35dip"
-        android:minWidth="10dip" />
-
-
-
-</RelativeLayout>
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Benghazi, Libya"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progress" />
+</android.support.constraint.ConstraintLayout>
