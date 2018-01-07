@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Horizon.iml" filepath="$PROJECT_DIR$/Horizon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HorizonApp.iml" filepath="$PROJECT_DIR$/HorizonApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

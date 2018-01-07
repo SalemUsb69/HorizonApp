@@ -1,12 +1,11 @@
 package com.androguro.usb.horizon;
 
-import android.app.DialogFragment;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,10 +13,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androguro.usb.horizon.app.ValuePairs;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +28,9 @@ import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+
+import static com.androguro.usb.horizon.app.Constatns.API_KEY;
+import static com.androguro.usb.horizon.app.Constatns.BASE_URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,14 +71,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        Log.e(TAG, "onCreate: LAT "+ValuePairs.getUserLAT(this) );
+
+        ValuePairs.setUserLAT("23.000",this);
+
+        Log.e(TAG, "onCreate: LAT "+ValuePairs.getUserLAT(this) );
+
         getForecast(latitude,longitude);
         Log.d(TAG,"Main UI is running !");
 
     }
 
     private void getForecast(double latitude, double longitude) {
-        String apiKey = "3d37616cccc7819e3f2e8322549f47c9";
-        String forecastUrl = "https://api.darksky.net/forecast/"+ apiKey +
+         String forecastUrl = BASE_URL + API_KEY +
                 "/"+ latitude +"," + longitude ;
 
 
@@ -156,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateDisplay() {
-        tempLabel.setText(currentWeather.getTemperature() + "");
+        tempLabel.setText(String.format(Locale.CANADA,"%d", currentWeather.getTemperature()));
         timeLabel.setText("At " +currentWeather.getFormattedTime() + " it will be :");
         humidityValue.setText(currentWeather.getHumidity()+ "");
         precipValue.setText(currentWeather.getPrecipChance()+ "%");
